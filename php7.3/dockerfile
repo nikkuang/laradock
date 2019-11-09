@@ -29,6 +29,7 @@ RUN apk add --no-cache \
     postgresql-libs \
     rsync \
     zlib-dev \
+    icu-dev \
     libzip-dev
 
 # Install PECL and PEAR extensions
@@ -40,9 +41,11 @@ RUN pecl install \
 RUN docker-php-ext-enable \
     imagick \
     xdebug
+RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
     curl \
+    exif \
     iconv \
     mbstring \
     pdo \
@@ -51,6 +54,7 @@ RUN docker-php-ext-install \
     pdo_sqlite \
     pcntl \
     tokenizer \
+    intl \
     xml \
     gd \
     zip \
