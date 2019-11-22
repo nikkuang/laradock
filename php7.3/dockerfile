@@ -20,6 +20,8 @@ RUN apk add --no-cache \
     imagemagick \
     libc-dev \
     libpng-dev \
+    freetype-dev \ 
+    libjpeg-turbo-dev \
     make \
     mysql-client \
     nodejs \
@@ -43,6 +45,7 @@ RUN docker-php-ext-enable \
     xdebug
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure zip --with-libzip
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN docker-php-ext-install \
     curl \
     exif \
