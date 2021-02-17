@@ -74,6 +74,9 @@ RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/
 # Install PHP_CodeSniffer
 RUN composer global require "squizlabs/php_codesniffer=*"
 
+# Install Vapor CLI 
+RUN composer global require laravel/vapor-cli
+
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
 
